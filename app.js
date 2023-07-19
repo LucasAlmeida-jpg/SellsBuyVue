@@ -30,40 +30,25 @@ const vm = new Vue({
         .then(r => r.json())
         .then(r => {
           this.produtos = r;
+          // console.log(this.produtos)
         })
     },
-    openModal(id) {
-      this.fetchProduto(id);
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      })
-    },
+
+    
     fetchProduto(id) {
       fetch(`./api/produtos/${id}/dados.json`)
-        .then(response => response.json())
-        .then(response => {
-          this.produto = response
-        })
-    },
-    closeModal({ target, currentTarget }) {
-      if (target === currentTarget) {
-        this.carrinhoAtivo = false
-      }
+      .then(r => r.json())
+      .then(r => {
+        this.produto  = r;
+      })
     },
 
-    clickForaCarrinho({ target, currentTarget }) {
-      if (target === currentTarget) {
-        this.produto = false
-      }
-    },
     addItems() {
-      this.produto.estoque--;
-      const { id, nome, preco } = this.produto
-      this.carrinho.push({ id, nome, preco })
-      this.alerta(`${nome} foi adicionado ao carrinho`)
+    this.produto.estoque--;
+    const {id, nome, preco}  = this.produto;
+    this.carrinho.push({id, nome, preco})
+    this.alerta(`${nome} foi adicionado ao carrinho`)
     },
-
     removeItems(index) {
       this.carrinho.splice(index, 1)
     },
