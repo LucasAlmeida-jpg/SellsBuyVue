@@ -39,12 +39,16 @@
       </div>
       <div class="offcanvas-body">
         <div class="d-flex justify-content-between" v-for="(item,index) in carrinho">
-          <div>
-            <p>{{item.nome}} - {{item.preco | numberPrice}}</p>
+          <div class="d-flex">
+            <div>
+              <p>{{item.nome}} - {{item.preco | numberPrice}}</p>
+            </div>
+            <div>
+              <img class="pequena" :src="produto.img" alt="imagem do produto">
+            </div>
           </div>
           <div>
             <button @click="removeItems(index)">Apagar</button>
-            
           </div>
           <hr>
         </div>
@@ -81,8 +85,11 @@
               <h4>{{produto.preco | numberPrice}}</h4>
               <p>Descricao: {{produto.descricao}}</p>
             </div>
-            <div class="text-center mt-3">
-              <button class="btn btn-primary" @click="addItems">Adicionar Item</button>
+            <div v-if="produto.estoque === 0" class="text-center mt-3">
+              <button class="btn btn-danger">Produto esgotado</button>
+            </div>
+            <div v-else class="text-center mt-3">
+              <button class="btn btn-primary" @click="addItems">Adicione {{produto.nome}}</button>
             </div>
           </div>
         </div>

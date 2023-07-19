@@ -13,6 +13,11 @@ img {
     background-color: black;
 }
 
+.pequena{
+    height: 50px;
+    width:50px;
+}
+
 .container-product{
     margin-top: 200px;
 }
