@@ -9,9 +9,9 @@ const vm = new Vue({
     alertaAtivo: false,
   },
   filters: {
-    numberPrice(valor) {
-      return valor.toLocaleString("pt-br", { style: "currency", currency: "BRL" })
-    }
+    // numberPrice(valor) {
+    //   // return valor.toLocaleString("pt-br", { style: "currency", currency: "BRL" })
+    // }
   },
   computed: {
     carrinhoTotal() {
